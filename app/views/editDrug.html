@@ -1,0 +1,80 @@
+<div class="modal-header">
+            <h3 class="modal-title">Edit {{drugname}}</h3>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label>Drug Name</label>
+                <input type="text" class="form-control" ng-model="drugname" ng-value="drugname">
+            </div>
+            <div class="form-group">
+                <label>Drug Type</label>
+                <input type="text" class="form-control" ng-model="drugtype" ng-value="drugtype">
+            </div>
+            <div class="form-group">
+            <form class ="form-inline" role="form">
+            <div class="form-group">
+                <label>Convert to Drug</label>
+                <input type="number" ng-model="convert2drug" class="form-control" ng-value="convert2drug">
+                <button class="btn" type="button" ng-click="saveAllDrug" ng-show="parentDrug">Save for All</button>
+            </div> </form> </div>
+            <div class="form-group">
+            <form class ="form-inline" role="form">
+            <div class="form-group">
+                <label>Convert to Morphine</label>
+                <input type="number" ng-model="convert2morphine" class="form-control" ng-value="convert2morphine">
+                <button class="btn" type="button" ng-click="saveAllMorp" ng-show="parentDrug">Save for All</button>
+            </div> </form>
+        </div>
+        <div class="form-group">
+            <form class ="form-inline" role="form">
+            <div class="form-group">
+                <div class="btn-group" dropdown is-open="status.isopen">
+                      <button id="single-button" type="button" class="btn" dropdown-toggle ng-disabled="disabled">Dose Options<span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu" role="menu" aria-labelledby="single-button">
+                        <li role="menuitem" ng-repeat="dose in doses track by $index" ng-click="getContent(dose, $index)"><a href="#">{{dose}}</a></li>
+                      </ul>
+                </div>
+                <input type="text" ng-model="doseopt" class="form-control" ng-value="doseopt">
+                <label>Value</label>
+                <input type="text" ng-model="doseoptv" class="form-control" ng-value="doseoptv">
+                <button class="btn" type="button" ng-click="addDrug()">Add New</button>
+                <button class="btn" type="button" ng-show="newdrug" ng-click="saveDrugDose()">Save Changes</button>
+            </div>
+            </form>
+        </div>
+            <div class="form-group"><div class="form-group">
+                <label>Stepper Enabled</label>
+                <input type="checkbox" class="form-control" value={{stepflag}} ng-click="stepflag = !stepflag">
+            </div>
+                <div class="form-group">
+                    <form class ="form-inline" role="form"><div class="form-group" ng-show="stepflag">
+                    <label>Convert to Drug Lower Range</label>
+                    <input type="number" class="form-control" ng-model="c2d_lower" ng-value="c2d_lower">
+                    <button class="btn" type="button" ng-click="saveAllc2dl" ng-show="parentDrug">Save for All</button>
+                </div> </form> </div>
+                <div class="form-group">
+                    <form class ="form-inline" role="form"><div class="form-group" ng-show="stepflag">
+                    <label>Convert to Drug Upper Range</label>
+                    <input type="number" class="form-control" ng-model="c2d_upper" ng-value="c2d_upper">
+                    <button class="btn" type="button" ng-click="saveAllc2du" ng-show="parentDrug">Save for All</button>
+                </div></form></div>
+                <div class="form-group">
+                    <form class ="form-inline" role="form"><div class="form-group" ng-show="stepflag">
+                    <label>Convert to Morphine Lower Range</label>
+                    <input type="number" class="form-control" ng-model="c2m_lower" ng-value="c2m_lower">
+                    <button class="btn" type="button" ng-click="saveAllc2ml" ng-show="parentDrug">Save for All</button>
+                </div></form></div>
+                <div class="form-group">
+                    <form class ="form-inline" role="form"><div class="form-group" ng-show="stepflag">
+                    <label>Convert to Morphine Upper Range</label>
+                    <input type="number" class="form-control" ng-model="c2m_upper" ng-value="c2m_upper">
+                    <button class="btn" type="button" ng-click="saveAllc2mu" ng-show="parentDrug">Save for All</button>
+                </div></form></div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-danger" ng-click="delete()">Remove Drug</button>
+            <button class="btn btn-primary" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>

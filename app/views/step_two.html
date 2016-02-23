@@ -1,0 +1,66 @@
+<style>
+
+
+  
+
+
+
+</style>
+
+<!-- Step 1 -->
+
+<div class="container">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Opilculator</a>
+    </div>
+    
+            
+            <label>Long Acting Drug
+                    <select class="form-control" popover="Choose your input drug, type to filter list of drugs"  data-ng-model="drug.singleSelect1"
+                        data-ng-options="name.dname for name in ourDatas" style="width:600px;" required  >
+                    </select>
+            </label>
+          
+          <rzslider rz-slider-model="priceSlider3"
+                rz-slider-floor="0"
+                rz-slider-ceil="100"
+                rz-slider-always-show-bar="true"
+                >
+          </rzslider>
+   
+            
+
+            <label>Short Acting Drug
+                <select class="form-control" popover="Choose your input drug, type to filter list of drugs"  data-ng-model="drug.singleSelect2"
+                        data-ng-options="name.dname for name in ourDatas" style="width:600px;" required  >
+                </select>
+            </label>
+          
+          
+            <rzslider rz-slider-model="priceSlider4"
+                rz-slider-floor="0"
+                rz-slider-ceil="100"
+                rz-slider-always-show-bar="true"
+                >
+            </rzslider>
+      
+         
+      
+            <label>Total %</label>
+          
+            <rzslider rz-slider-model="90"
+                rz-slider-floor="0"
+                rz-slider-ceil="100"
+                rz-slider-always-show-bar="true"
+                >
+            </rzslider>
+          
+
+          <button class="btn btn-primary glyphicon glyphicon-chevron-right" ng-click="stepThree()" >Next</button>
+  </div>

@@ -1,0 +1,70 @@
+<style>
+    
+ .popover {
+    width: 160px !important;
+}
+
+ .buttons {
+    margin-left: 450px;
+ }
+
+    
+    
+    table {
+        margin-top: 100px;
+    }
+
+
+
+</style>
+
+<!-- Step 1 -->
+
+<div class="container" ng-controller="MainCtrl" >
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+    
+            <a class="navbar-brand" href="#">Opilculator</a>
+            <div class="buttons">
+                <a class="navbar-brand" href="#"><button class="btn btn-default" ng-click="activateInput()"> Tutorial </button></a>
+                <a class="navbar-brand" ng-click="addRow()" href="#"><button class="btn btn-default"> Add Drug </button></a> <!-- adds rows -->
+            </div>
+        </div>
+
+       <table class="table">
+        <tr ng-repeat="(rowIndex, row) in rows">
+            <td>{{ourDatas.doseOptions}}</td>
+            <td>
+                <label for="singleSelect">{{row.drug}}
+                    <select class="form-control" popover="Choose your input drug, type to filter list of drugs" data-ng-model="row.singleSelect" ng-click="setDose(row, row.singleSelect)" data-ng-options="name.dname for name in ourDatas" style="width:300px;" required></select>
+                </label>
+            </td>
+            <td>
+                <label for="selectedDose">{{row.dose}}
+                    <select class="form-control" popover="Choose dosage amount" data-ng-model="row.selectedDose" ng-options='dose for dose in row.doseOptions' style="width:200px;" required></select>
+                </label>
+                <input type="text" class="form-control" placeholder="Edit Dose" data-ng-model="row.selectedDose">
+            </td>
+            <td>
+                <!-- Periods dropdown selection box -->
+                <label>{{row.period}}
+                    <select class="form-control" popover="Choose how many times a day taken" data-ng-model="row.selectedPeriod" data-ng-options="name for name in periods" style="width:100px;" required></select>
+                </label>
+            </td>
+            <td>
+                <input type="button" value="-" class="btn btn-primary" ng-click="removeRow(rowIndex)" />
+            </td>
+        </tr>
+    </table> 
+          
+          
+    <div class="row">
+        <button class="btn btn-primary glyphicon glyphicon-chevron-right" ng-click="stepTwo()" >Next</button>
+    </div>
+
+</div>
